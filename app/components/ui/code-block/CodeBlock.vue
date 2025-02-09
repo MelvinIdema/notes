@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki'
 import { cn } from '@/lib/utils'
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible'
-import { ChevronDown } from 'lucide-vue-next'
 
 interface CodeBlockProps {
   code: string
@@ -23,16 +17,9 @@ const props = withDefaults(defineProps<CodeBlockProps>(), {
 const isOpen = ref(true)
 const highlightedCode = ref('')
 
-onMounted(async () => {
-  try {
-    highlightedCode.value = await codeToHtml(props.code, {
-      lang: props.lang,
-      theme: props.theme,
-    })
-  } catch (error) {
-    console.error('Failed to highlight code:', error)
-    highlightedCode.value = props.code
-  }
+highlightedCode.value = await codeToHtml(props.code, {
+  lang: props.lang,
+  theme: props.theme
 })
 
 const labelStyle = computed(() => {
@@ -49,30 +36,23 @@ const labelStyle = computed(() => {
 </script>
 
 <template>
-  <Collapsible v-model:open="isOpen" :class="cn('overflow-hidden rounded-lg border border-border bg-gray-900/95', props.class)">
-    <CollapsibleTrigger class="flex justify-between items-center px-4 py-2 w-full border-b border-gray-700/90 bg-gray-800/90">
+  <div :class="cn('overflow-hidden rounded-lg border border-border bg-gray-900/95', props.class)">
+    <div class="flex justify-between items-center px-4 py-2 w-full border-b border-gray-700/90 bg-gray-800/90">
       <div class="flex gap-2 items-center">
         <div class="w-3 h-3 bg-red-400 rounded-full opacity-80" />
         <div class="w-3 h-3 bg-yellow-400 rounded-full opacity-80" />
         <div class="w-3 h-3 bg-green-400 rounded-full opacity-80" />
       </div>
       <div class="flex gap-2 items-center">
-        <div :class="cn('px-2 py-1 text-xs font-medium rounded-md bg-gray-700/80 text-gray-300', labelStyle)">
+        <div :class="cn('px-2 py-1 text-xs font-medium text-gray-300 rounded-md bg-gray-700/80', labelStyle)">
           {{ props.lang }}
         </div>
-        <ChevronDown 
-          :class="cn('h-4 w-4 text-gray-400 transition-transform', {
-            'transform rotate-180': isOpen
-          })"
-        />
       </div>
-    </CollapsibleTrigger>
-    
-    <!-- Code content -->
-    <CollapsibleContent class="relative p-6 h-full text-sm">
+    </div>
+    <div class="relative p-6 h-full text-sm">
       <div class="overflow-x-auto overflow-y-auto h-full" v-html="highlightedCode" />
-    </CollapsibleContent>
-  </Collapsible>
+    </div>
+  </div>
 </template>
 
 <style scoped>
