@@ -63,8 +63,8 @@ const breadcrumb = computed(() => {
       <SidebarRail />
     </Sidebar>
 
-    <SidebarInset class="flex overflow-hidden flex-col flex-1 h-svh">
-      <header class="flex gap-2 items-center px-4 h-16 border-b shrink-0">
+    <SidebarInset class="flex overflow-hidden flex-col flex-1 bg-gray-50 h-svh">
+      <header class="flex gap-2 items-center px-4 h-16 bg-white border-b shrink-0">
         <SidebarTrigger class="-ml-1" />
         <Separator orientation="vertical" class="mr-2 h-4" />
         <Breadcrumb>

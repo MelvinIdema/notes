@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { exampleCode } from './exampleCode.js'
+
 const code = `export default async function useInitializeNuxtApp() {
     const { status, execute } = await useLazyAsyncData('authentication', async () => {
       // An api call that takes some time
@@ -28,22 +30,6 @@ const usageCode = `const { initializationStatus, initializeNuxtApp } = await use
 onMounted(async () => {
   await initializeNuxtApp()
 })`
-
-const appCode = `<template>
-    <NuxtLayout :name="layout" :key="initializationStatus">
-        <NuxtLoadingIndicator />
-        <NuxtPage :name="initializationStatus === 'success' ? undefined : ''" :key="initializationStatus" />
-    </NuxtLayout>
-</template>
-
-<script lang="ts" setup>
-const layout = computed(() => initializationStatus.value === 'success' ? 'default' : 'spa-loading-template')
-const { initializationStatus, initializeNuxtApp } = await useInitializeNuxtApp()
-
-onBeforeMount(async () => {
-    await initializeNuxtApp()
-})
-/* end the script tag */`
 </script>
 
 <template>
@@ -99,7 +85,7 @@ onBeforeMount(async () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <CodeBlock :code="appCode" lang="vue" />
+            <CodeBlock :code="exampleCode" lang="vue" />
           </CardContent>
         </Card>
       </div>
