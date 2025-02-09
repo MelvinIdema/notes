@@ -4,9 +4,9 @@ const { navMain } = useNavigation()
 
 <template>
   <header>
-    <h1 class="text-2xl font-bold">The Complete Guide to Dating Fetching in Nuxt</h1>
+    <h1 class="text-2xl font-bold">The Complete Guide to Data Fetching in Nuxt</h1>
     <p class="mt-1 text-sm text-muted-foreground">
-      A reference work for the course <NuxtLink to="https://vueschool.io/courses/the-complete-guide-to-data-fetching-in-nuxt" target="_blank" class="text-blue-500">The Complete Guide to Dating App in Nuxt.js</NuxtLink>
+      A reference work for the course <NuxtLink to="https://vueschool.io/courses/the-complete-guide-to-data-fetching-in-nuxt" target="_blank" class="text-blue-500">The Complete Guide to Data Fetching in Nuxt.js</NuxtLink>
     </p>
   </header>
   <Separator class="my-4" />
