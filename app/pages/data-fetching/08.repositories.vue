@@ -1,13 +1,6 @@
 <script setup>
-const userRepository = useUserRepository()
-
-const { data, error } = await useAsyncData('users', () => userRepository.index())
-
-watchEffect(() => {
-  console.log(error.value)
-})
-
 const repositoryCode = `function useUserRepository() {
+  // You can either pass the whole query to $fetch
   async function index(query) {
     // Do not await $fetch here, it will cause issues!
     return $fetch('endpoint', {
@@ -22,6 +15,7 @@ const repositoryCode = `function useUserRepository() {
     });
   }
 
+  // Or you can pass specific paramaters, narrowing down the query.
   async function read(id) {
     return $fetch('endpoint', {
       query: id,
@@ -50,6 +44,15 @@ const repositoryCode = `function useUserRepository() {
     destroy,
   }
 }`
+
+const usageCode = `const userRepository = useUserRepository()
+
+// Always use the repository inside useAsyncData
+const { data, error } = useAsyncData('users', () => userRepository.index())
+`
+
+
+
 </script>
 
 <template>
@@ -74,6 +77,17 @@ const repositoryCode = `function useUserRepository() {
           </CardHeader>
           <CardContent>
             <CodeBlock :code="repositoryCode" lang="typescript" />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle class="mb-2">Usage</CardTitle>
+            <CardDescription>
+              Example of how to use the repository.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <CodeBlock :code="usageCode" lang="typescript" />
           </CardContent>
         </Card>
       </div>
