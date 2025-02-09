@@ -50,36 +50,28 @@ const labelStyle = computed(() => {
 
 <template>
   <Collapsible v-model:open="isOpen" :class="cn('overflow-hidden rounded-lg border border-border bg-gray-900/95', props.class)">
-    <div class="relative">
-      <!-- Header with language badge -->
-      <CollapsibleTrigger class="w-full">
-        <div class="flex justify-between items-center px-4 py-2 border-b border-gray-700/90 bg-gray-800/90">
-          <div class="flex gap-2 items-center">
-            <div class="w-3 h-3 bg-red-400 rounded-full opacity-80" />
-            <div class="w-3 h-3 bg-yellow-400 rounded-full opacity-80" />
-            <div class="w-3 h-3 bg-green-400 rounded-full opacity-80" />
-          </div>
-          <div class="flex gap-2 items-center">
-            <div :class="cn('px-2 py-1 text-xs font-medium rounded-md bg-gray-700/80 text-gray-300', labelStyle)">
-              {{ props.lang }}
-            </div>
-            <ChevronDown 
-              :class="cn('h-4 w-4 text-gray-400 transition-transform', {
-                'transform rotate-180': isOpen
-              })"
-            />
-          </div>
+    <CollapsibleTrigger class="flex justify-between items-center px-4 py-2 w-full border-b border-gray-700/90 bg-gray-800/90">
+      <div class="flex gap-2 items-center">
+        <div class="w-3 h-3 bg-red-400 rounded-full opacity-80" />
+        <div class="w-3 h-3 bg-yellow-400 rounded-full opacity-80" />
+        <div class="w-3 h-3 bg-green-400 rounded-full opacity-80" />
+      </div>
+      <div class="flex gap-2 items-center">
+        <div :class="cn('px-2 py-1 text-xs font-medium rounded-md bg-gray-700/80 text-gray-300', labelStyle)">
+          {{ props.lang }}
         </div>
-      </CollapsibleTrigger>
-      
-      <!-- Code content -->
-      <CollapsibleContent>
-        <div 
-          class="overflow-x-auto relative p-6 text-sm bg-gray-900/95"
-          v-html="highlightedCode"
+        <ChevronDown 
+          :class="cn('h-4 w-4 text-gray-400 transition-transform', {
+            'transform rotate-180': isOpen
+          })"
         />
-      </CollapsibleContent>
-    </div>
+      </div>
+    </CollapsibleTrigger>
+    
+    <!-- Code content -->
+    <CollapsibleContent class="relative p-6 h-full text-sm">
+      <div class="overflow-x-auto overflow-y-auto h-full" v-html="highlightedCode" />
+    </CollapsibleContent>
   </Collapsible>
 </template>
 
@@ -88,11 +80,16 @@ const labelStyle = computed(() => {
   margin: 0;
   padding: 0;
   background: transparent !important;
+  white-space: pre;
+  max-width: 100%;
 }
 
 :deep(code) {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875rem;
   line-height: 1.5;
+  background: transparent !important;
+  display: inline-block;
+  max-width: 100%;
 }
 </style>

@@ -32,38 +32,15 @@ const breadcrumb = computed(() => {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger as-child>
-                <SidebarMenuButton
-                  size="lg"
-                  :class="{ 'data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground': dropdownOpen }"
-                  @click="toggleDropdown"
-                >
-                  <div class="flex justify-center items-center rounded-lg aspect-square size-8 bg-sidebar-primary text-sidebar-primary-foreground">
-                    <LucideGalleryVerticalEnd class="size-4" />
-                  </div>
-                  <div class="flex flex-col gap-0.5 leading-none">
-                    <span class="font-semibold">Documentation</span>
-                    <span>{{ selectedVersion }}</span>
-                  </div>
-                  <LucideChevronsUpDown class="ml-auto" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                v-if="dropdownOpen"
-                class="w-[--radix-dropdown-menu-trigger-width]"
-                align="start"
-              >
-                <DropdownMenuItem
-                  v-for="version in data.versions"
-                  :key="version"
-                  @click="setSelectedVersion(version)"
-                >
-                  {{ version }}
-                  <LucideCheck v-if="version === selectedVersion" class="ml-auto" />
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <SidebarMenuButton size="lg">
+              <div class="flex justify-center items-center rounded-lg aspect-square size-8 bg-sidebar-primary text-sidebar-primary-foreground">
+                <LucideGalleryVerticalEnd class="size-4" />
+              </div>
+              <div class="flex flex-col gap-0.5 leading-none">
+                <span class="font-semibold">Documentation</span>
+                <span>{{ selectedVersion }}</span>
+              </div>
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -86,7 +63,7 @@ const breadcrumb = computed(() => {
       <SidebarRail />
     </Sidebar>
 
-    <SidebarInset>
+    <SidebarInset class="flex overflow-hidden flex-col flex-1 h-svh">
       <header class="flex gap-2 items-center px-4 h-16 border-b shrink-0">
         <SidebarTrigger class="-ml-1" />
         <Separator orientation="vertical" class="mr-2 h-4" />
@@ -100,7 +77,7 @@ const breadcrumb = computed(() => {
         </Breadcrumb>
       </header>
 
-      <div class="flex-1 p-6">
+      <div class="overflow-y-auto overflow-x-hidden flex-1 p-6 min-h-0">
         <slot />
       </div>
     </SidebarInset>

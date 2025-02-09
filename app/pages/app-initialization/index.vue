@@ -64,7 +64,7 @@ onBeforeMount(async () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <CodeBlock :code="code" class="p-1 rounded-md bg-muted" />
+            <CodeBlock :code="code" />
           </CardContent>
         </Card>
 
@@ -76,7 +76,7 @@ onBeforeMount(async () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <CodeBlock :code="usageCode" class="p-1 rounded-md bg-muted" />
+            <CodeBlock :code="usageCode" />
           </CardContent>
         </Card>
 

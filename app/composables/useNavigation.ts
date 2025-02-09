@@ -1,13 +1,14 @@
-interface NavItem {
+export interface NavItem {
   title: string;
   url: string;
 }
 
-interface NavSection {
+export interface NavSection {
   title: string;
   description?: string;
   url: string;
   items: NavItem[];
+  hideInToC?: boolean;
 }
 
 export function useNavigation() {
@@ -15,6 +16,7 @@ export function useNavigation() {
     {
       title: "01. Introduction",
       description: "This home page",
+      hideInToC: true,
       url: "#",
       items: [{ title: "Start", url: "/" }],
     },
