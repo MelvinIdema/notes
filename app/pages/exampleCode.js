@@ -1,7 +1,7 @@
 export const vueTemplate = `<script>
 const userRepository = useUserRepository();
 
-const { data: users, status } = useAsyncData('users', () => userRepository.index({ page: 1, perPage: 10 }));
+const { data: users, status } = await useAsyncData('users', () => userRepository.index({ page: 1, perPage: 10 }));
 </script>
 
 <template>
