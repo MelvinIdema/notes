@@ -12,7 +12,14 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@pinia/nuxt",
     "nuxt-lucide-icons",
+    "@scalar/nuxt",
   ],
+
+  scalar: {
+    spec: {
+      url: "https://cdn.jsdelivr.net/npm/@scalar/galaxy/dist/latest.yaml",
+    },
+  },
 
   shadcn: {
     prefix: "",

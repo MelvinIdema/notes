@@ -3,12 +3,9 @@ export default defineNuxtPlugin(() => {
         baseURL: 'https://dummyjson.com',
     })
 
-    const testVariable = 'test'
-
     return {
         provide: {
             api,
-            testVariable,
         },
     }
 })

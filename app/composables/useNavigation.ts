@@ -40,7 +40,27 @@ export function useNavigation() {
       ],
     },
     {
-      title: "03. App Initialization",
+      title: "03. Caching",
+      description:
+        "This section covers the different ways to cache data in Nuxt.",
+      url: "#",
+      items: [
+        {
+          title: "01. Navigation Caching",
+          url: "/caching/01.navigation-caching",
+        },
+        {
+          title: "02. Persistent Caching",
+          url: "/caching/02.persistent-caching",
+        },
+        {
+          title: "03. Placeholder Caching",
+          url: "/caching/03.placeholder-caching",
+        },
+      ],
+    },
+    {
+      title: "04. App Initialization",
       description:
         "This section covers the different ways to initialize a Nuxt app.",
       url: "#",
