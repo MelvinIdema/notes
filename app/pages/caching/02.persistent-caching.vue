@@ -12,7 +12,7 @@ const networkActivity = ref<{ network: boolean, request: string, randomId: numbe
 
 let abortController = new AbortController()
 const productUrl = computed(() => `https://fakestoreapi.com/products/${productId.value}`)
-const { data, execute } = await useFetch(productUrl.value, { signal: abortController.signal })
+const { data, execute } = await useAsyncData('product', () => $fetch(productUrl.value, { signal: abortController.signal }))
 
 watch(productId, async () => {
   if (cachedData.value.has(cacheId.value)) {
@@ -42,7 +42,7 @@ watch(data, () => {
           <CardHeader>
             <CardTitle>Persistent Caching</CardTitle>
             <CardDescription class="w-2/3">
-              Easily implement persistent caching with useFetch, an abortController and a Map.
+              Easily implement persistent caching with useAsyncData, an abortController and a Map.
               You could use a global state management library like Pinia to store the Map or even store it in localStorage.
               Keep in mind that you need to handle cache invalidation when the data is updated.
             </CardDescription>
