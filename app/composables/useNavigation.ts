@@ -30,7 +30,6 @@ export function useNavigation() {
         { title: "02. Queries", url: "/data-fetching/02.queries" },
         { title: "03. Error", url: "/data-fetching/03.error" },
         { title: "04. Parallel", url: "/data-fetching/04.parallel" },
-        { title: "05. Caching", url: "/data-fetching/05.caching" },
         {
           title: "06. Pick and Transform",
           url: "/data-fetching/06.pick-and-transform",

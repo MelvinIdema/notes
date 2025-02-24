@@ -14,7 +14,6 @@ const props = withDefaults(defineProps<CodeBlockProps>(), {
   theme: 'github-dark'
 })
 
-const isOpen = ref(true)
 const highlightedCode = ref('')
 
 highlightedCode.value = await codeToHtml(props.code, {
@@ -50,7 +49,7 @@ const labelStyle = computed(() => {
       </div>
     </div>
     <div class="relative p-6 h-full text-sm">
-      <div class="overflow-x-auto overflow-y-auto h-full" v-html="highlightedCode" />
+      <div class="overflow-x-auto overflow-y-auto h-full w-full" v-html="highlightedCode" />
     </div>
   </div>
 </template>
