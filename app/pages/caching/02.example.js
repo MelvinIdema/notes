@@ -5,7 +5,7 @@ const cacheId = computed(() => \`product-\${productId.value}\`)
 let abortController = new AbortController()
 
 const productUrl = computed(() => \`https://fakestoreapi.com/products/\${productId.value}\`)
-const { data, execute } = await useAsyncData(cacheId.value, () => $fetch(productUrl.value, { signal: abortController.signal }))
+const { data, execute } = await useFetch(productUrl.value, { signal: abortController.signal })
 
 watch(productId, async () => {
   if (cachedData.value.has(cacheId.value)) {

@@ -43,7 +43,7 @@ const { navMain } = useNavigation()
     <Card class="overflow-hidden">
       <CardContent class="flex flex-col gap-4 pt-6">
         <CodeBlock :code="repositoryCode" lang="typescript" class="[data-state=open]:min-h-[219px]" />
-        <CodeBlock :code="vueTemplate" lang="vue" class="max-h-[395px]" />
+        <CodeBlock :code="vueTemplate" lang="vue" class="max-h-[595px]" />
       </CardContent>
     </Card>
   </main>
